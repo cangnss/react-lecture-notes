@@ -50,16 +50,31 @@ class Collapse extends React.Component{
         }*/
     }
 
+    /* 
+        DOM düğümleri ile ilişkili atama işlemleri bu fonksiyon içerisinde yapılmalıdır. 
+        Bu nedenle eğer verilerinizi uzak bir API’den yüklemeniz gerekiyorsa, 
+        ağ isteğini bu fonksiyonda başlatabilirsiniz.
+    */
+    // componentDidMount(){
+    //     console.log('component olustu.');
+    // }
+
+    // componentDidUpdate(){
+    //     console.log('Component güncellendi.')
+    // }
+
     render(){
         return (
             <div>
                 <button className="btn btn-primary w-100" onClick={this.showMore}>
-                    Link with href
+                    {/* {this.props.children.props.cardTitle} */}
+                    {React.Children.map(this.props.children, children => children.props.cardTitle)}
                 </button>
                 {
                     this.state.showContent ? (
                         <div className="collapse show">
-                            {this.props.children}
+                            {/* {this.props.children} */}
+                            {React.Children.map(this.props.children, children => children)}
                         </div>
                     ) : null
                 }
